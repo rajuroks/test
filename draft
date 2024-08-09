@@ -17,7 +17,9 @@ Ownership Mapping using ITAM
 
 Leverage the IT Asset Management (ITAM) system to map ownership of assets and ensure accurate notification delivery to the responsible teams.
 
-Utilize tool to send notifications according to severity levels and track remediation progress.
+Notification Dispatch and Tracking
+
+Utilize VMARC to send notifications according to severity levels and track remediation progress.
 Generate reports on notification effectiveness and remediation status.
 Testing and Validation
 
@@ -28,8 +30,3 @@ Document the process and provide training to relevant teams on interpreting noti
 Go-Live and Monitoring
 
 Launch the operation and establish ongoing monitoring and feedback loops to ensure continuous improvement.
-Success Metrics
-Reduction in Unresolved Vulnerabilities
-Notification Accuracy
-Remediation Time
-Compliance Adherence
