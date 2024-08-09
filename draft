@@ -12,10 +12,10 @@ Adherence to Firm Vulnerability Management Processes
 
 Align notification content, timing, and escalation with the firm’s guidelines.
 Ensure all notifications meet internal standards through a compliance checklist.
-User and Role Mapping
 
-Maintain an updated mapping of end users and roles to ensure accurate notification delivery to the appropriate remediation teams.
-Notification Dispatch and Tracking
+Ownership Mapping using ITAM
+
+Leverage the IT Asset Management (ITAM) system to map ownership of assets and ensure accurate notification delivery to the responsible teams.
 
 Utilize tool to send notifications according to severity levels and track remediation progress.
 Generate reports on notification effectiveness and remediation status.
