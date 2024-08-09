@@ -1,0 +1,35 @@
+Milestone: Develop and Operate Cloud Security Vulnerability Management Operation
+Objective
+To effectively manage cloud security vulnerabilities by processing data from Wiz for cloud workloads and Prisma Cloud Compute for Kubernetes workloads. Notifications will be sent to end users responsible for remediation through the  tool, following the firm’s established vulnerability management processes and guidelines.
+
+Key Activities
+Notification Workflow in tool
+
+Configure tool to process vulnerability data from Wiz and Prisma Cloud Compute.
+Define triggers and templates for notifications based on firm policies.
+Implement escalation procedures for unresolved vulnerabilities.
+Adherence to Firm Vulnerability Management Processes
+
+Align notification content, timing, and escalation with the firm’s guidelines.
+Ensure all notifications meet internal standards through a compliance checklist.
+User and Role Mapping
+
+Maintain an updated mapping of end users and roles to ensure accurate notification delivery to the appropriate remediation teams.
+Notification Dispatch and Tracking
+
+Utilize tool to send notifications according to severity levels and track remediation progress.
+Generate reports on notification effectiveness and remediation status.
+Testing and Validation
+
+Conduct thorough testing to ensure notifications are sent accurately and timely, and tracking mechanisms function as expected.
+Documentation and Training
+
+Document the process and provide training to relevant teams on interpreting notifications and taking appropriate actions.
+Go-Live and Monitoring
+
+Launch the operation and establish ongoing monitoring and feedback loops to ensure continuous improvement.
+Success Metrics
+Reduction in Unresolved Vulnerabilities
+Notification Accuracy
+Remediation Time
+Compliance Adherence
