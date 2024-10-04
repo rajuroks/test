@@ -44,3 +44,13 @@ with open("data.json") as f_input, open("output.csv", "w", newline="") as f_outp
     csv_output = csv.DictWriter(f_output, delimiter=";", fieldnames=sorted(fieldnames))
     csv_output.writeheader()
     csv_output.writerows(get_leaves(entry) for entry in json_data)
+
+
+
+Cloud Platform Expertise: Proficiency in cloud platforms such as AWS, Azure, or Google Cloud. Candidates should understand cloud-specific security features, configurations, and services.
+Vulnerability Management Tools: Experience with tools such as Tenable, Qualys, or open-source scanners (e.g., OpenVAS) used for identifying vulnerabilities in cloud environments.
+Container Security: Knowledge of container security for environments like Docker and Kubernetes, including scanning for vulnerabilities in images and managing container runtimes securely.
+Automation and Scripting: Ability to automate vulnerability management tasks using Python, Bash, or other scripting languages. This is crucial for scaling vulnerability scans and remediation.
+Cloud Security Posture Management (CSPM): Familiarity with CSPM tools to ensure continuous security and compliance across multi-cloud environments.
+Security Information and Event Management (SIEM): Experience using SIEM tools for monitoring, detecting, and responding to cloud vulnerabilities and threats.
+Compliance Knowledge: Understanding of security frameworks and regulations such as CIS benchmarks, NIST, GDPR, and PCI DSS, which are essential for managing vulnerabilities in regulated industries.
