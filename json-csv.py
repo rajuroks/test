@@ -1,49 +1,9 @@
-import json  # For JSON loading
-import csv  # For CSV dict writer
+Took the lead in thoroughly analyzing data from scanning tools, identifying critical security gaps, and ensuring that potential vulnerabilities were promptly addressed to safeguard the organization.
+Worked closely with the tools team to explain identified gaps in detail, providing them with clear, actionable examples and supporting them in implementing solutions to resolve these issues effectively.
+Spearheaded the introduction of notification processes to proactively inform stakeholders about risks, significantly enhancing the organization's ability to mitigate vulnerabilities and reduce overall risk exposure.
+Actively supported team members by offering guidance and assistance when they encountered challenges, fostering a collaborative environment that encouraged continuous learning and problem-solving.
+#######
+Proactively identified critical Common Vulnerabilities and Exposures (CVEs), ensuring timely notification to Business Units (BUs). This action allowed for early intervention, significantly reducing the firm’s risk exposure to critical security vulnerabilities.
+Key Role in Establishing the Vulnerability Management Program
 
-
-def get_leaves(item, key=None, key_prefix=""):
-    """
-    This function converts nested dictionary structure to flat
-    """
-    if isinstance(item, dict):
-        leaves = {}
-        """Iterates the dictionary and go to leaf node after that calls to get_leaves function recursively to go to leaves level"""
-        for item_key in item.keys():
-            """Some times leaves and parents or some other leaves might have same key that's why adding leave node key to distinguish"""
-            temp_key_prefix = (
-                item_key if (key_prefix == "") else (key_prefix + "_" + str(item_key))
-            )
-            leaves.update(get_leaves(item[item_key], item_key, temp_key_prefix))
-        return leaves
-    elif isinstance(item, list):
-        leaves = {}
-        elements = []
-        """Iterates the list and go to leaf node after that if it is leave then simply add value to current key's list or 
-        calls to get_leaves function recursively to go to leaves level"""
-        for element in item:
-            if isinstance(element, dict) or isinstance(element, list):
-                leaves.update(get_leaves(element, key, key_prefix))
-            else:
-                elements.append(element)
-        if len(elements) > 0:
-            leaves[key] = elements
-        return leaves
-    else:
-        return {key_prefix: item}
-
-
-with open("data.json") as f_input, open("output.csv", "w", newline="") as f_output:
-    json_data = json.load(f_input, strict=False)
-    """'First parse all entries to get the unique fieldnames why because already we have file in RAM level and
-    if we put each dictionary after parsing in list or some data structure it will crash your system due to memory constraint
-    that's why first we will get the keys first then we convert each dictionary and put it to CSV"""
-    fieldnames = set()
-    for entry in json_data:
-        fieldnames.update(get_leaves(entry).keys())
-    csv_output = csv.DictWriter(f_output, delimiter=";", fieldnames=sorted(fieldnames))
-    csv_output.writeheader()
-    csv_output.writerows(get_leaves(entry) for entry in json_data)
-
-
-
+Played a pivotal role in the development and implementation of the vulnerability management program, which addressed a significant gap in the firm’s cloud security infrastructure. This program contributed to the reduction of the majority of critical vulnerabilities, substantially decreasing risk across cloud environments.
