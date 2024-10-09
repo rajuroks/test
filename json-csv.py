@@ -7,7 +7,7 @@ Automated Notification and Jira Integration: Upon clicking the "Notify" button, 
 
 Updating Remediation and Acknowledgments: The tool allows users to log any feedback from stakeholders, such as acknowledgments or remediation updates. For instance, if an image owner reports that a particular vulnerability has been remediated, the corresponding dates can be updated in the system. This feature also triggers notifications to workload owners who rely on these updates, prompting them to take any necessary actions based on the new information.
 
-Handling False Positives: If a user determines that a CVE is a false positive, they can mark it as such within the tool. This ensures that future notifications regarding that CVE for the particular asset (tied to its unique eonid) will be suppressed, preventing unnecessary alerts and reducing noise for users.
+Handling False Positives: If a user determines that a CVE is a false positive, they can mark it as such within the tool. This ensures that future notifications regarding that CVE for the particular asset (tied to its unique ) will be suppressed, preventing unnecessary alerts and reducing noise for users.
 
 Post-Remediation Asset Removal: Once users remediate the identified CVEs, the corresponding assets are removed from the Vulnerability Management and Reporting Console (VMARC) after a three-day period. This cleanup ensures that the tool reflects only the active vulnerabilities, providing a clearer and more up-to-date view of the organization's security posture.
 
