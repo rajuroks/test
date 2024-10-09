@@ -10,3 +10,6 @@ Updating Remediation and Acknowledgments: The tool allows users to log any feedb
 Handling False Positives: If a user determines that a CVE is a false positive, they can mark it as such within the tool. This ensures that future notifications regarding that CVE for the particular asset (tied to its unique eonid) will be suppressed, preventing unnecessary alerts and reducing noise for users.
 
 Post-Remediation Asset Removal: Once users remediate the identified CVEs, the corresponding assets are removed from the Vulnerability Management and Reporting Console (VMARC) after a three-day period. This cleanup ensures that the tool reflects only the active vulnerabilities, providing a clearer and more up-to-date view of the organization's security posture.
+
+
+Users can click on the "Details" button next to a particular CVE in the list to review its information and related assets. For new assets that have popped up in the last 24 hours, users will see a "Notify" button associated with each asset. By clicking on "Notify," they can alert the relevant teams about the new vulnerabilities.
