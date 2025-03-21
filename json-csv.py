@@ -1,27 +1,50 @@
+Slide 1: TOI Vulnerability Management - Overview
+Objective:
+To align TOI VM with existing vulnerability management processes for efficient risk identification and notification.
 
-TOI Vulnerability Management (VM) Process
-The TOI Vulnerability Management (VM) process aligns with the existing enterprise vulnerability management workflows. This ensures consistency, integration with established tools, and operational efficiency across the infrastructure.
+Key Components:
 
-1. Scanning Infrastructure
-The VM process begins with two existing vulnerability scanning tools (Tool1 and Tool2) that perform automated scans on cloud and on-premise infrastructure. These tools assess the systems for known vulnerabilities on a scheduled basis or on demand.
+Scanning Tools
+Data Ingestion (Kafka)
+Analysis Platforms (Splunk, Platform Tool)
+Ownership Mapping (ITAM)
+Notifications to Asset Owners
+Slide 2: Step 1 – Vulnerability Scanning
+Tools Involved: Tool1 & Tool2
 
-2. Data Ingestion and Processing
-Once scans are completed:
+Perform regular scans across infrastructure.
+Identify vulnerabilities on cloud and on-prem environments.
+Output:
 
-The tools expose scan results via APIs.
-Custom scripts are used to retrieve these scan results and publish them to Kafka topics for further processing.
-3. Consumption by Analysis Platforms
-The scan data from Kafka topics is consumed by:
+Raw scan results made available through APIs.
+Slide 3: Step 2 – Data Ingestion via Kafka
+Scripts:
 
-Splunk: For visualization, alerting, and dashboarding.
-Platform Tool: Used for deeper analysis, enrichment, and automation.
-4. Ownership Mapping
-To determine asset ownership:
+Retrieve scan results via API.
+Publish data into Kafka topics.
+Why Kafka?
 
-The scan data is mapped against IT Asset Management (ITAM) data.
-This correlation provides accurate ownership information for each asset with vulnerabilities.
-5. Notification and Remediation
-With asset ownership established:
+Reliable, scalable, and asynchronous data streaming.
+Slide 4: Step 3 – Data Consumption & Analysis
+Consumers of Kafka Topics:
 
-The VM Operations team triggers automated email notifications to the respective asset owners.
-These notifications include details about detected vulnerabilities and required remediation actions.
+Splunk: For dashboards, alerts, and search queries.
+Platform Tool: For deeper correlation and reporting.
+Goal:
+
+Centralize and normalize scan data.
+Slide 5: Step 4 – Ownership Mapping via ITAM
+Action:
+
+Scan data is enriched by mapping to ITAM (IT Asset Management).
+Purpose:
+
+Identify the correct asset owners responsible for remediation.
+Slide 6: Step 5 – Notifications & Remediation
+VM Operations Team:
+
+Sends automated email notifications to respective owners.
+Emails include vulnerability details and remediation guidance.
+Outcome:
+
+Timely awareness and action by responsible teams.
