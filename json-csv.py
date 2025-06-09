@@ -1,11 +1,11 @@
-
-SELECT 
-  TO_CHAR(vulnerability_first_seen, 'YYYY-MM-DD') AS day,
-  name AS cluster_name,
-  COUNT(DISTINCT vulnerability_finding_id) AS finding_count
-FROM vm_data.cloudplatform_vmarc_vulnerability_details
-WHERE 
-  provider = 'OP'
-  AND vulnerability_first_seen >= CURRENT_DATE - INTERVAL '6' DAY
-GROUP BY TO_CHAR(vulnerability_first_seen, 'YYYY-MM-DD'), name
-ORDER BY day, finding_count DESC;
+WITH images_0605 AS (
+  SELECT DISTINCT image_digest FROM vm_data.cloudplatform_vmarc_vulnerability_details
+  WHERE TO_CHAR(vulnerability_first_seen, 'YYYY-MM-DD') = '2025-06-05'
+),
+images_0604 AS (
+  SELECT DISTINCT image_digest FROM vm_data.cloudplatform_vmarc_vulnerability_details
+  WHERE TO_CHAR(vulnerability_first_seen, 'YYYY-MM-DD') = '2025-06-04'
+)
+SELECT image_digest
+FROM images_0605
+WHERE image_digest NOT IN (SELECT image_digest FROM images_0604);
