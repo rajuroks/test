@@ -1,3 +1,1 @@
 
-| rex field=vulnerableAsset.cloudProviderURL "https:\/\/portal\.azure\.com(?<middle>.*)\/resource"
-
