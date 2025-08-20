@@ -1,1 +1,2 @@
 
+| rex field=vulnerableAsset.cloudProviderURL "(?<baseURL>https:\/\/[^\/]+\/#@[^\/]+\/resource)"
