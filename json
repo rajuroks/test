@@ -1,1 +1,60 @@
+-- Schema/name: adjust if needed (e.g., EMRA.EDWTRANS)
+CREATE TABLE CC_D_CMRCL_TRANS (
+    /* ----- Data-source / lineage & control columns (from your sticky note) ----- */
+    DST_TRSOURCE        VARCHAR2(4),
+    DST_TRSCGT          NUMBER(3),
+    DST_TRTOD           NUMBER(4),
+    LST_UPDT_RUN_ID     NUMBER,
+    REC_SYNC_NBR        NUMBER,
+    SRC_SYS_CD          VARCHAR2(20),
+    TRANS_REC_SRC_CD    CHAR(1),
 
+    /* ----- Amount distribution (bottom rows visible in shot #1 and #2) ----- */
+    AT41_AMOUNT_DIST1   NUMBER(13,2),
+    AT41_AMOUNT_DIST2   NUMBER(13,2),
+    AT41_AMOUNT_DIST3   NUMBER(13,2),
+    AT41_AMOUNT_DIST4   NUMBER(13,2),
+    AT41_AMOUNT_DIST5   NUMBER(13,2),
+    AT41_AMOUNT_DIST6   NUMBER(13,2),
+    AT41_AMOUNT_DIST7   NUMBER(13,2),
+    AT41_AMOUNT_DIST8   NUMBER(13,2),
+
+    /* ----- Category applied (shot #2) ----- */
+    AT41_CATEGORY_APPLIED1  VARCHAR2(4),
+    AT41_CATEGORY_APPLIED2  VARCHAR2(4),
+    AT41_CATEGORY_APPLIED3  VARCHAR2(4),
+    AT41_CATEGORY_APPLIED4  VARCHAR2(4),
+    AT41_CATEGORY_APPLIED5  VARCHAR2(4),
+    AT41_CATEGORY_APPLIED6  VARCHAR2(4),
+    AT41_CATEGORY_APPLIED7  VARCHAR2(4),
+    AT41_CATEGORY_APPLIED8  VARCHAR2(4),
+
+    /* ----- Outstanding type flags (shot #2) ----- */
+    AT41_OUTSTANDING_TYPE1  CHAR(1),
+    AT41_OUTSTANDING_TYPE2  CHAR(1),
+    AT41_OUTSTANDING_TYPE3  CHAR(1),
+    AT41_OUTSTANDING_TYPE4  CHAR(1),
+    AT41_OUTSTANDING_TYPE5  CHAR(1),
+    AT41_OUTSTANDING_TYPE6  CHAR(1),
+    AT41_OUTSTANDING_TYPE7  CHAR(1),
+    AT41_OUTSTANDING_TYPE8  CHAR(1),
+
+    /* ----- VFC fuel details (shot #2) ----- */
+    AT41_VFC1_FUEL_TYPE         VARCHAR2(2),
+    AT41_VFC1_FUEL_UNIT_COST    NUMBER(13,4),
+    AT41_VFC1_FUEL_UNIT_MEASURE CHAR(1),
+    AT41_VFC1_QTY               NUMBER(13,4),
+    AT41_VFC1_VAT_TAX_RATE      VARCHAR2(2),
+
+    /* ----- Business key columns from the header (shot #2 shows PK: BSNS_DT, REC_SQNC_NBR) ----- */
+    BSNS_DT         DATE        NOT NULL,
+    REC_SQNC_NBR    NUMBER      NOT NULL
+
+    /* NOTE: Many additional columns are visible higher up in the list (e.g., AT31_* family,
+             flags, dates, codes). Share a closer crop of those rows and I’ll append them verbatim. */
+);
+
+-- Primary Key exactly as shown in the header of your screenshots
+ALTER TABLE CC_D_CMRCL_TRANS
+  ADD CONSTRAINT PK_CC_D_CMRCL_TRANS
+  PRIMARY KEY (BSNS_DT, REC_SQNC_NBR);
