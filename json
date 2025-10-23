@@ -1,7 +1,1 @@
 
-| eval priority_code = substr(priority, 1, 2)  
-| where 
-    (priority_code="P1" AND epri IN ("E1", "E2", "E3", "E4")) OR
-    (priority_code="P2" AND epri IN ("E1", "E2", "E3", "E4")) OR
-    (priority_code="P3" AND epri IN ("E1", "E2", "E3")) OR
-    (priority_code="P4" AND epri="E1")
