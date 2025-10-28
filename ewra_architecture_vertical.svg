@@ -1,0 +1,97 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1800" font-family="Segoe UI, Arial">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="10" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,3 L0,6 z" fill="#333" />
+    </marker>
+    <style>
+      .title{font-weight:bold;font-size:20px}
+      .box{rx:10;ry:10;stroke:#333;stroke-width:1}
+      .note{font-size:12px;fill:#333}
+      .step{fill:#dfe9ff;stroke:#6c8ebf}
+    </style>
+  </defs>
+
+  <!-- Header -->
+  <rect class="box" x="40" y="20" width="1120" height="50" fill="#fad7ac" stroke="#b46504"/>
+  <text x="600" y="52" class="title" text-anchor="middle">EWRA – OpenShift Containerized Architecture (Vertical)</text>
+
+  <!-- Top: Sources -->
+  <rect class="box" x="80" y="90" width="460" height="220" fill="#dae8fc" stroke="#6c8ebf"/>
+  <text x="310" y="115" text-anchor="middle" font-weight="bold">Datalake Sources</text>
+  <text x="100" y="140" class="note">Ascentium, GreenSky, Mortgage, MTS, RFSCRF, RFSIDD, RFSNON</text>
+
+  <rect class="box" x="80" y="320" width="460" height="100" fill="#e1d5e7" stroke="#9673a6"/>
+  <text x="310" y="350" text-anchor="middle" font-weight="bold">SQL Server: Leasing, EnerBank, Regis</text>
+
+  <rect class="box" x="80" y="440" width="460" height="100" fill="#fff2cc" stroke="#d6b656"/>
+  <text x="310" y="470" text-anchor="middle" font-weight="bold">Wendy's Team: Risk Ratings, Transaction Codes</text>
+
+  <!-- Shared Drive -->
+  <rect class="box" x="80" y="580" width="460" height="120" fill="#ffe6cc" stroke="#d79b00"/>
+  <text x="310" y="640" text-anchor="middle" font-weight="bold">Shared Network Drive (CSV Landing)</text>
+
+  <!-- Arrow from sources to shared -->
+  <g stroke="#333" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="310" y1="520" x2="310" y2="580"/>
+  </g>
+  <circle cx="310" cy="560" r="16" class="step"/><text x="310" y="565" text-anchor="middle" font-weight="bold">1</text>
+
+  <!-- OpenShift -->
+  <rect class="box" x="80" y="740" width="460" height="420" fill="#d5e8d4" stroke="#82b366"/>
+  <text x="310" y="765" text-anchor="middle" font-weight="bold">OpenShift (ENCR Namespace)</text>
+
+  <rect class="box" x="100" y="790" width="200" height="40" fill="#ffffff" stroke="#82b366"/>
+  <text x="200" y="815" text-anchor="middle">ConfigMaps / Secrets</text>
+  <rect class="box" x="100" y="840" width="200" height="40" fill="#ffffff" stroke="#82b366"/>
+  <text x="200" y="865" text-anchor="middle">PVC: /data/ewra</text>
+
+  <rect class="box" x="320" y="790" width="200" height="240" fill="#cce5ff" stroke="#6c8ebf"/>
+  <text x="420" y="810" text-anchor="middle" font-weight="bold">Python Containers</text>
+  <text x="330" y="835" class="note">[P1] py_extract_datalake</text>
+  <text x="330" y="855" class="note">[P2] py_extract_sql</text>
+  <text x="330" y="875" class="note">[P3] py_create_tables</text>
+  <text x="330" y="895" class="note">[P4] py_import_to_db</text>
+  <text x="330" y="915" class="note">[P5] py_execute_main_query</text>
+  <text x="330" y="935" class="note">[P6] orchestrator (cron)</text>
+
+  <!-- arrows shared -> ocp -->
+  <g stroke="#333" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="310" y1="700" x2="310" y2="740"/>
+  </g>
+  <circle cx="310" cy="720" r="16" class="step"/><text x="310" y="725" text-anchor="middle" font-weight="bold">2</text>
+
+  <!-- ENCR / EDWPROD / Final -->
+  <rect class="box" x="80" y="1190" width="460" height="90" fill="#d5e8d4" stroke="#82b366"/>
+  <text x="310" y="1240" text-anchor="middle" font-weight="bold">ENCR Oracle (EWRA Schema)</text>
+  <g stroke="#333" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="310" y1="1160" x2="310" y2="1190"/>
+  </g>
+  <circle cx="310" cy="1175" r="16" class="step"/><text x="310" y="1180" text-anchor="middle" font-weight="bold">3</text>
+
+  <rect class="box" x="80" y="1100" width="460" height="70" fill="#fff2cc" stroke="#d6b656"/>
+  <text x="310" y="1145" text-anchor="middle">EDWPROD (optional copy)</text>
+  <g stroke="#333" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="310" y1="1100" x2="310" y2="1190"/>
+  </g>
+  <circle cx="310" cy="1140" r="16" class="step"/><text x="310" y="1145" text-anchor="middle" font-weight="bold">4</text>
+
+  <rect class="box" x="80" y="1300" width="460" height="90" fill="#f8cecc" stroke="#b85450"/>
+  <text x="310" y="1350" text-anchor="middle" font-weight="bold">Final EWRA CSV</text>
+  <g stroke="#333" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="310" y1="1280" x2="310" y2="1300"/>
+  </g>
+  <circle cx="310" cy="1290" r="16" class="step"/><text x="310" y="1295" text-anchor="middle" font-weight="bold">5</text>
+
+  <rect class="box" x="80" y="1410" width="460" height="70" fill="#dae8fc" stroke="#6c8ebf"/>
+  <text x="310" y="1455" text-anchor="middle">Delivered to Wendy's Team</text>
+  <g stroke="#333" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="310" y1="1390" x2="310" y2="1410"/>
+  </g>
+  <circle cx="310" cy="1400" r="16" class="step"/><text x="310" y="1405" text-anchor="middle" font-weight="bold">6</text>
+
+  <!-- CICD -->
+  <rect class="box" x="80" y="1540" width="460" height="120" fill="#e1f5fe" stroke="#29b6f6"/>
+  <text x="310" y="1570" text-anchor="middle" font-weight="bold">CI/CD</text>
+  <text x="310" y="1595" text-anchor="middle">GitHub → Artifactory → Harness → OpenShift</text>
+</svg>
