@@ -7,13 +7,15 @@ with open(file_in, 'r') as f:
     lines = f.readlines()
 
 with open(file_out, 'w') as f:
-    # Adding header for Excel alignment
     f.write("RFNON_BUS_TYPE,ENTITYNAME\n")
-    for line in lines[1:]: # Skip the original messy header
-        # This matches the single letter code followed by the rest of the name
-        match = re.match(r'^([A-Z])\s+(.*)', line.strip())
-        if match:
-            code, name = match.groups()
-            f.write(f'{code},"{name}"\n')
+    for line in lines:
+        # This split handles both tabs and multiple spaces
+        parts = re.split(r'\s{2,}', line.strip())
+        if len(parts) >= 2:
+            code = parts[0].strip()
+            name = parts[1].strip()
+            # Only write if the code is a single letter (A, C, E, etc.)
+            if len(code) == 1 and code.isalpha():
+                f.write(f'{code},"{name}"\n')
 
-print("Process finished. Check CLEAN_BUSINESS_TYPES.csv now.")
+print("Process finished. Open CLEAN_BUSINESS_TYPES.csv to verify.")
