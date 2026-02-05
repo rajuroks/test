@@ -1,1 +1,19 @@
 
+import re
+
+file_in = 'EWRA_COUNTRY_RISK_RATING_2026_JANUARY.csv'
+file_out = 'CLEAN_COUNTRY_DATA.csv'
+
+with open(file_in, 'r') as f:
+    lines = f.readlines()
+
+with open(file_out, 'w') as f:
+    for line in lines:
+        # This regex is specifically tuned for your country file layout
+        parts = re.split(r'\s{2,}', line.strip())
+        if len(parts) >= 2:
+            code_name = parts[0].split(' ', 1)
+            code = code_name[0]
+            name = code_name[1] if len(code_name) > 1 else ""
+            ratings = parts[1:]
+            f.write(f'{code},"{name}",{",".join(ratings)}\n')
