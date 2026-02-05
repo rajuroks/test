@@ -9,13 +9,12 @@ with open(file_in, 'r') as f:
 with open(file_out, 'w') as f:
     f.write("RFNON_BUS_TYPE,ENTITYNAME\n")
     for line in lines:
-        # This split handles both tabs and multiple spaces
-        parts = re.split(r'\s{2,}', line.strip())
-        if len(parts) >= 2:
-            code = parts[0].strip()
-            name = parts[1].strip()
-            # Only write if the code is a single letter (A, C, E, etc.)
-            if len(code) == 1 and code.isalpha():
-                f.write(f'{code},"{name}"\n')
+        text = line.strip()
+        # Look for a single letter at the start, followed by any whitespace
+        match = re.match(r'^([A-Z])\s+(.*)', text)
+        if match:
+            code, name = match.groups()
+            # Clean up extra spaces from the name and write to file
+            f.write(f'{code},"{name.strip()}"\n')
 
-print("Process finished. Open CLEAN_BUSINESS_TYPES.csv to verify.")
+print("Process finished. Check the file now!")
