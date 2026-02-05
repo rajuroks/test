@@ -1,49 +1,19 @@
-
 import re
 
-file_in = 'EWRA_COUNTRY_RISK_RATING_2026_JANUARY.csv'
-file_out = 'CLEAN_COUNTRY_DATA.csv'
+file_in = 'EWRA_FOOTPRINT_2026_JANUARY.csv'
+file_out = 'CLEAN_BUSINESS_TYPES.csv'
 
 with open(file_in, 'r') as f:
     lines = f.readlines()
 
 with open(file_out, 'w') as f:
-    for line in lines:
-        # This regex is specifically tuned for your country file layout
-        parts = re.split(r'\s{2,}', line.strip())
-        if len(parts) >= 2:
-            code_name = parts[0].split(' ', 1)
-            code = code_name[0]
-            name = code_name[1] if len(code_name) > 1 else ""
-            ratings = parts[1:]
-            f.write(f'{code},"{name}",{",".join(ratings)}\n')
-
-
-#########
-
-
-import re
-
-file_in = 'EWRA_COUNTRY_RISK_RATING_2026_JANUARY.csv'
-file_out = 'CLEAN_COUNTRY_DATA.csv'
-
-with open(file_in, 'r') as f:
-    lines = f.readlines()
-
-with open(file_out, 'w') as f:
-    # Adding a header for Excel
-    f.write("Country Code,Country Name,AML RISK RATING,OFAC RISK RATING\n")
-    for line in lines:
-        # 1. Strip out the broken '$3', '$4' and double quotes symbols first
-        clean_line = line.replace('$', '').replace('3', '').replace('4', '').replace('"', '')
-        
-        # 2. Look for the 2-letter Country Code at the start
-        match = re.search(r'^([A-Z]{2})\s+(.*?)\s+(High|Low|Moderate(?:-High|-Low)?)(?:\s+(High|Low|Moderate(?:-High|-Low)?))?', clean_line.strip())
-        
+    # Adding header for Excel alignment
+    f.write("RFNON_BUS_TYPE,ENTITYNAME\n")
+    for line in lines[1:]: # Skip the original messy header
+        # This matches the single letter code followed by the rest of the name
+        match = re.match(r'^([A-Z])\s+(.*)', line.strip())
         if match:
-            code, name, aml, ofac = match.groups()
-            ofac = ofac if ofac else "" 
-            # Write with proper CSV formatting
-            f.write(f'{code},"{name.strip()}",{aml},{ofac}\n')
+            code, name = match.groups()
+            f.write(f'{code},"{name}"\n')
 
-print("Process finished. Check CLEAN_COUNTRY_DATA.csv now.")
+print("Process finished. Check CLEAN_BUSINESS_TYPES.csv now.")
